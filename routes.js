@@ -55,12 +55,17 @@ router.post(
             .escape()
             .trim()
             .isLength({ min: 3 }),
+        body("_name", "The name must not be over 12 characters")
+            .notEmpty()
+            .escape()
+            .trim()
+            .isLength({ max: 12 }),
         body("_email", "Invalid email address")
             .notEmpty()
             .escape()
             .trim()
             .isEmail(),
-        body("_password", "The Password must be of minimum 4 characters length")
+        body("_password", "The Password must be of minimum 6 characters length")
             .notEmpty()
             .trim()
             .isLength({ min: 4 }),
